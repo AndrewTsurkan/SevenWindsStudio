@@ -1,6 +1,6 @@
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+final class CreateAccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,5 +14,7 @@ extension CreateAccountViewController: CreateAccountViewOutput {
 }
 
 //MARK: - CreateAccountInput -
-extension CreateAccountViewController: CreateAccountViewInput { }
+extension CreateAccountViewController: CreateAccountViewInput {
+//    var output: CreateAccountViewOutput
+}
 
