@@ -5,8 +5,12 @@ fileprivate enum Constants {
     static let spacing: CGFloat = 2
     static let cornerRadius: CGFloat = 24.5
     static let labelSize: CGFloat = 15
-    static let customColor =  UIColor.init(red: 132, green: 99, blue: 64, alpha: 1)
+    static let customColor =  UIColor.init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
     static let dorderWidth: CGFloat = 2
+    static let height: CGFloat = 47
+    static let leftViewFrame: CGFloat = 0
+    static let leftViewWith: CGFloat = 20
+    static let leftViewHeight: CGFloat = 2
 }
 
 final class CustonTextField: UIView {
@@ -27,9 +31,8 @@ final class CustonTextField: UIView {
 }
 //MARK: - Public -
 extension CustonTextField {
-    func settingTextField(placeholder: String) {
-        textField.placeholder = placeholder
-    }
+    func settingTextField(placeholderText: String) {
+        textField.placeholder = placeholderText   }
     
     func settingLabel(text: String) {
         label.text = text
@@ -61,6 +64,7 @@ private extension CustonTextField {
         stackView.axis = .vertical
         stackView.spacing = Constants.spacing
     }
+    
     func setupLabel() {
         label.font = UIFont.systemFont(ofSize: Constants.labelSize)
         label.textColor = Constants.customColor
@@ -72,5 +76,12 @@ private extension CustonTextField {
         textField.layer.cornerRadius = Constants.cornerRadius
         textField.layer.borderColor = Constants.customColor.cgColor
         textField.layer.borderWidth = Constants.dorderWidth
+        let leftView = UIView(frame: CGRect(x: Constants.leftViewFrame,
+                                            y: Constants.leftViewFrame,
+                                            width: Constants.leftViewWith,
+                                            height: Constants.leftViewHeight))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+        textField.heightAnchor.constraint(equalToConstant: Constants.height).isActive = true
     }
 }

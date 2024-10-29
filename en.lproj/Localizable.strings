@@ -1,2 +1,10 @@
 //MARK: - CreateAccount -
 "email_text" = "e-mail";
+"mail_example" = "example@example.ru";
+"pasword_mask" = "******";
+"password" = "Password";
+"repeat_password" = "Repeat password";
+"registration_button" = "Registration";
+
+
+
