@@ -1,4 +1,4 @@
 import Foundation
 protocol CreateAccountViewInput: AnyObject {
-    var output: CreateAccountViewOutput { get }
+//    var output: CreateAccountViewOutput? { get set}
 }
