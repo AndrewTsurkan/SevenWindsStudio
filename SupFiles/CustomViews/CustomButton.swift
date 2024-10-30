@@ -38,5 +38,6 @@ private extension CustomButton {
         self.layer.borderWidth = Constants.dorderWidth
         self.setTitleColor(Constants.textColor, for: .normal)
         self.heightAnchor.constraint(equalToConstant: Constants.height).isActive = true
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
     }
 }

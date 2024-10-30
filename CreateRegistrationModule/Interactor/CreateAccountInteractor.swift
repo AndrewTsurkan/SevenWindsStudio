@@ -6,9 +6,9 @@ final class CreateAccountInteractor {
 
 //MARK: - CreateAccountInteractorInput -
 extension CreateAccountInteractor: CreateAccountInteractorInput {
-    var outPut: any CreateAccountInteractorOutput {
-        
-    }
+//    var outPut: any CreateAccountInteractorOutput {
+//        
+//    }
     
     func createAccount(login: String, pasword: String) {
         

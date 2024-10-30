@@ -1,5 +1,6 @@
 import Foundation
 
-struct CreateAccountEntityTests {
-    
+struct CreateAccountEntity: Codable {
+    var token: String
+    var tokenLifetime: Int
 }

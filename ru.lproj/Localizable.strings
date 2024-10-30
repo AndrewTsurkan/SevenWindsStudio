@@ -1,8 +1,8 @@
 //MARK: - CreateAccount -
 "email_text" = "e-mail";
 "mail_example" = "example@example.ru";
-"pasword_mask" = "******";
+"password_mask" = "******";
 "password" = "Пароль";
 "repeat_password" = "Повторите пароль";
-"registration_button" = "Регистрация";
+"registration_title" = "Регистрация";
 

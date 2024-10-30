@@ -3,13 +3,8 @@ import SnapKit
 
 fileprivate enum Constants {
     static let stackViewSpasing: CGFloat = 24
-    static let stackViewOffset: CGFloat = 18
-    static let mailLabel = "email_text"
-    static let mailPlaceholder: String = "mail_example"
-    static let passwordLabel: String = "password"
-    static let passwordMask: String = "pasword_mask"
-    static let repeatPasswordLabel: String = "repeat_password"
-    static let buttonText: String = "registration_button"
+    static let leftAndRightOffset: CGFloat = 18
+    static let rigisterButtonTopOffset: CGFloat = 30
 }
 
 final class CreateAccountContentView: UIView {
@@ -47,7 +42,8 @@ private extension CreateAccountContentView {
     
     func addSubviews() {
         addSubview(stackView)
-        let subViews: [UIView] =  [emailField, passwordField, repeatPasswordField, registerButton]
+        addSubview(registerButton)
+        let subViews: [UIView] =  [emailField, passwordField, repeatPasswordField]
         subViews.forEach { stackView.addArrangedSubview($0) }
     }
     
@@ -55,8 +51,15 @@ private extension CreateAccountContentView {
         stackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.left.equalToSuperview().offset(Constants.stackViewOffset)
-            $0.right.equalToSuperview().offset(-Constants.stackViewOffset)
+            $0.left.equalToSuperview().offset(Constants.leftAndRightOffset)
+            $0.right.equalToSuperview().offset(-Constants.leftAndRightOffset)
+        }
+        
+        registerButton.snp.makeConstraints {
+            $0.top.equalTo(stackView.snp.bottom).offset(Constants.rigisterButtonTopOffset)
+            $0.left.equalToSuperview().offset(Constants.leftAndRightOffset)
+            $0.right.equalToSuperview().offset(-Constants.leftAndRightOffset)
+
         }
     }
     
@@ -66,21 +69,21 @@ private extension CreateAccountContentView {
     }
     
     func setupEmailField() {
-        emailField.settingLabel(text: NSLocalizedString(Constants.mailLabel, comment: ""))
-        emailField.settingTextField(placeholderText: NSLocalizedString(Constants.mailPlaceholder, comment: ""))
+        emailField.settingLabel(text: Localizable.emailText)
+        emailField.settingTextField(placeholderText:Localizable.mailExample)
     }
     
     func setupPasswordField() {
-        passwordField.settingLabel(text: NSLocalizedString(Constants.passwordLabel, comment: ""))
-        passwordField.settingTextField(placeholderText: NSLocalizedString(Constants.passwordMask, comment: ""))
+        passwordField.settingLabel(text: Localizable.password)
+        passwordField.settingTextField(placeholderText: Localizable.passwordMask)
     }
     
     func setupRepeatPasswordField() {
-        repeatPasswordField.settingLabel(text: NSLocalizedString(Constants.repeatPasswordLabel, comment: ""))
-        repeatPasswordField.settingTextField(placeholderText: NSLocalizedString(Constants.passwordMask, comment: ""))
+        repeatPasswordField.settingLabel(text: Localizable.repeatPassword)
+        repeatPasswordField.settingTextField(placeholderText: Localizable.passwordMask)
     }
     
     func setupRegisterButton() {
-        registerButton.settingButtonTitle(title: NSLocalizedString(Constants.buttonText, comment: ""))
+        registerButton.settingButtonTitle(title: Localizable.registrationTitle)
     }
 }
