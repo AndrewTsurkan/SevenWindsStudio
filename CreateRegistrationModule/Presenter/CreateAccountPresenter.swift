@@ -27,7 +27,7 @@ extension CreateAccountPresenter: CreateAccountViewOutput {
     }
     
     func validPassword(password: String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+        let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9]).{6,}$"
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
