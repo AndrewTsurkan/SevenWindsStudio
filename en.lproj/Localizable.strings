@@ -5,6 +5,11 @@
 "password" = "Password";
 "repeat_password" = "Repeat password";
 "registration_title" = "Registration";
+"alert_text" = "The user is registered with this email";
+"alert_title" = "Notification";
+"alert_action" = "OK";
 
-
+//MARK: - Authtorization -
+"enter_title" = "Enter";
+"alert_text_authotorization" = "This account is not registered";
 

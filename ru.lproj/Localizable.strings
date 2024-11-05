@@ -5,4 +5,12 @@
 "password" = "Пароль";
 "repeat_password" = "Повторите пароль";
 "registration_title" = "Регистрация";
+"alert_text" = "Пользователь с такой электронной почтой зарегестрирована ";
+"alert_title" = "Уведомление";
+"alert_action" = "Хорошо";
+
+
+//MARK: - Authtorization -
+"enter_title" = "Войти";
+"alert_text_authotorization" = "Этот аккаунт не зарегистрирован";
 

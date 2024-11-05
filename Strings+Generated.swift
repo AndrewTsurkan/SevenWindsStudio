@@ -10,8 +10,18 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Localizable {
+  /// OK
+  internal static let alertAction = Localizable.tr("Localizable", "alert_action", fallback: "OK")
+  /// The user is registered with this email
+  internal static let alertText = Localizable.tr("Localizable", "alert_text", fallback: "The user is registered with this email")
+  /// This account is not registered
+  internal static let alertTextAuthotorization = Localizable.tr("Localizable", "alert_text_authotorization", fallback: "This account is not registered")
+  /// Notification
+  internal static let alertTitle = Localizable.tr("Localizable", "alert_title", fallback: "Notification")
   /// e-mail
   internal static let emailText = Localizable.tr("Localizable", "email_text", fallback: "e-mail")
+  /// Enter
+  internal static let enterTitle = Localizable.tr("Localizable", "enter_title", fallback: "Enter")
   /// example@example.ru
   internal static let mailExample = Localizable.tr("Localizable", "mail_example", fallback: "example@example.ru")
   /// Password

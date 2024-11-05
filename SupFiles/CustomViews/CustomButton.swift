@@ -27,6 +27,14 @@ extension CustomButton {
     func settingButtonTitle(title: String) {
         self.setTitle(title, for: .normal)
     }
+    
+    func enableButton(enable: Bool) {
+        self.isEnabled = enable
+    }
+    
+    func setAlpha(enable: Bool) {
+        self.alpha = enable ? 1 : 0.5
+    }
 }
 
 //MARK: - UI -

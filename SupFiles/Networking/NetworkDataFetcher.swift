@@ -1,10 +1,10 @@
 import Foundation
 
 struct NetworkDataFetcher {
-    private let networkSecvice = NetworkService()
+    private let networkService = NetworkService()
     
-    func fetchJson<T: Codable>(closure: @escaping (Result<T, Error>) -> ()) {
-        networkSecvice.networkRequest { result in
+    func fetchJson<T: Codable>(urlString: String, login: String, password: String, closure: @escaping (Result<T, Error>) -> ()) {
+        networkService.networkRequest(url: urlString, login: login, password: password) { result in
             switch result {
             case .success(let data):
                 do {
