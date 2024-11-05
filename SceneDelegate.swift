@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  SevenWindsStudio
-//
-//  Created by Андрей Цуркан on 29.10.2024.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -15,7 +8,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScrene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScrene)
-        window.rootViewController = UINavigationController(rootViewController: CreateAccountViewController())
+        let rootViewController = RegistrationAssembly.assembleRegistrationModule()
+        window.rootViewController = UINavigationController(rootViewController: rootViewController)
         self.window = window
         window.makeKeyAndVisible()
     }

@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 fileprivate enum Constants {
-    static let spacing: CGFloat = 2
+    static let spacing: CGFloat = 8
     static let cornerRadius: CGFloat = 24.5
     static let labelSize: CGFloat = 15
     static let customColor =  UIColor.init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
@@ -13,7 +13,7 @@ fileprivate enum Constants {
     static let leftViewHeight: CGFloat = 2
 }
 
-final class CustonTextField: UIView {
+final class CustomTextField: UIView {
     //MARK: - Private properties -
     private let label = UILabel()
     private let textField = UITextField()
@@ -30,16 +30,37 @@ final class CustonTextField: UIView {
     }
 }
 //MARK: - Public -
-extension CustonTextField {
+extension CustomTextField {
     func settingTextField(placeholderText: String) {
         textField.placeholder = placeholderText   }
     
     func settingLabel(text: String) {
         label.text = text
     }
+    
+    func textFieldData() -> String? {
+        return textField.text
+    }
+    
+    func setDelagate(dalegate: UITextFieldDelegate) {
+        textField.delegate = dalegate
+    }
+    
+    func setMode(_ mode: Bool) {
+        textField.isSecureTextEntry = mode
+    }
+    
+    func setTag(tag: Int) {
+        textField.tag = tag
+    }
+    
+    func borderColor(color: CGColor) {
+        textField.layer.borderColor = color
+        textField.layer.borderWidth = Constants.dorderWidth
+    }
 }
 //MARK: - UI -
-private extension CustonTextField {
+private extension CustomTextField {
     func setupUI() {
         addSunbviews()
         makeConstraints()

@@ -1,8 +1,22 @@
-//
-//  CreateAccountRouter.swift
-//  SevenWindsStudio
-//
-//  Created by Андрей Цуркан on 29.10.2024.
-//
-
 import Foundation
+
+final class CreateAccountRouter {
+    weak var registrationViewController: CreateAccountViewController?
+}
+
+//MARK: - Public -
+extension CreateAccountRouter {
+    func setViewController(viewController: CreateAccountViewController) {
+        registrationViewController = viewController
+    }
+}
+
+//MARK: - CreateAccountRouterInput -
+extension CreateAccountRouter: CreateAccountRouterInput {
+    func openAuthorizationScreen() {
+        let authVC = AuthorizationAssembly.assembleAuthorizationModule()
+        registrationViewController?.navigationController?.pushViewController(authVC, animated: true)
+    }
+    
+    
+}

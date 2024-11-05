@@ -9,23 +9,21 @@ struct NetworkService {
         case invalidData
     }
     
-    func networkRequest(complition: @escaping (Result<Data, Error>) -> ()) {
-        let params: Parameters = [
-            "login" : "qwasdasdqqqqqqqqqewewqвqqwe@mail.ru",
-            "password" : "qwertyu"]
+    func networkRequest(url: String, login: String, password: String, completion: @escaping (Result<Data, Error>) -> ()) {
+        let params: [String: String] = ["login": login, "password": password]
+        guard let url = URL(string: url) else { return }
         
-        let header = HTTPHeader(name: "Content-type", value: "application/json")
-        AF.request("http://147.78.66.203:3210/auth/register", 
-                   method: .post,
-                   parameters: params,
-                   headers: [header]).validate().response { response in
+        var request = try! URLRequest(url: url, method: .post)
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.httpBody = try? JSONEncoder().encode(params)
+        AF.request(request).validate().response { response in
             guard let data = response.data else {
                 if let error = response.error {
-                    complition(.failure(error))
+                    completion(.failure(error))
                 }
                 return
             }
-            complition(.success(data))
+            completion(.success(data))
         }
     }
 }

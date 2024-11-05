@@ -1,6 +1,6 @@
 import Foundation
 
 struct CreateAccountEntity: Codable {
-    var token: String
-    var tokenLifetime: Int
+    let token: String?
+    let tokenLifetime: Int?
 }

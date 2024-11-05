@@ -9,11 +9,24 @@ fileprivate enum Constants {
 
 final class CreateAccountContentView: UIView {
     //MARK: - Private properties -
-    private let emailField = CustonTextField()
-    private let passwordField =  CustonTextField()
-    private let repeatPasswordField =  CustonTextField()
+    private let emailField = CustomTextField()
+    private let passwordField =  CustomTextField()
+    private let repeatPasswordField =  CustomTextField()
     private let registerButton = CustomButton()
     private let stackView = UIStackView()
+    var buttonAction: (() -> Void)?
+    
+    var emailText: String? {
+        emailField.textFieldData()
+    }
+    
+    var passwordText: String? {
+        passwordField.textFieldData()
+    }
+    
+    var repeatPasswordText: String? {
+        repeatPasswordField.textFieldData()
+    }
     
     //MARK: - Live cycle -
     override init(frame: CGRect) {
@@ -25,6 +38,32 @@ final class CreateAccountContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+//MARK: - Public -
+extension CreateAccountContentView {
+    func setTextFieldDelegate(delegate: UITextFieldDelegate) {
+        emailField.setDelagate(dalegate: delegate)
+        passwordField.setDelagate(dalegate: delegate)
+        repeatPasswordField.setDelagate(dalegate: delegate)
+    }
+    
+    func enabelButton(enable: Bool) {
+        registerButton.enableButton(enable: enable)
+        registerButton.setAlpha(enable: enable)
+    }
+    
+    func mailBorderColor(color: CGColor) {
+        emailField.borderColor(color: color)
+    }
+    
+    func passwordBorderColor(color: CGColor) {
+        passwordField.borderColor(color: color)
+    }
+    
+    func repeatBorderColor(color: CGColor) {
+        repeatPasswordField.borderColor(color: color)
+    }
 }
 
 //MARK: - UI -
@@ -51,8 +90,8 @@ private extension CreateAccountContentView {
         stackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.left.equalToSuperview().offset(Constants.leftAndRightOffset)
-            $0.right.equalToSuperview().offset(-Constants.leftAndRightOffset)
+            $0.left.right.equalToSuperview().inset(Constants.leftAndRightOffset)
+           
         }
         
         registerButton.snp.makeConstraints {
@@ -71,19 +110,32 @@ private extension CreateAccountContentView {
     func setupEmailField() {
         emailField.settingLabel(text: Localizable.emailText)
         emailField.settingTextField(placeholderText:Localizable.mailExample)
+        emailField.setTag(tag: 0)
     }
     
     func setupPasswordField() {
         passwordField.settingLabel(text: Localizable.password)
         passwordField.settingTextField(placeholderText: Localizable.passwordMask)
+        passwordField.setTag(tag: 1)
+        passwordField.setMode(true)
     }
     
     func setupRepeatPasswordField() {
         repeatPasswordField.settingLabel(text: Localizable.repeatPassword)
         repeatPasswordField.settingTextField(placeholderText: Localizable.passwordMask)
+        repeatPasswordField.setTag(tag: 2)
+        repeatPasswordField.setMode(true)
     }
     
     func setupRegisterButton() {
         registerButton.settingButtonTitle(title: Localizable.registrationTitle)
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+    }
+}
+
+//MARK: - Private -
+extension CreateAccountContentView {
+    @objc func registerButtonTapped() {
+        buttonAction?()
     }
 }
