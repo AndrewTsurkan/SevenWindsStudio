@@ -18,7 +18,7 @@ extension CreateAccountInteractor: CreateAccountInteractorInput {
         networkManager.fetchJson(urlString: urlString, login: login, password: password) { [weak self] (result: Result<CreateAccountEntity, Error>) in
             guard let self else { return }
             switch result {
-            case .success(_):
+            case .success(let data):
                 self.outPut?.didCreateAccount()
             case .failure(_):
                 self.outPut?.showAlert()

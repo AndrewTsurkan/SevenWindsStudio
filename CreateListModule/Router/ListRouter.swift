@@ -1,5 +1,6 @@
 import Foundation
 
-final class ListRouter {
+final class ListRouter: ListRouterInput {
     
 }
+

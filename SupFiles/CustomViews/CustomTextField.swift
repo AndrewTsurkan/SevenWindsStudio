@@ -19,7 +19,7 @@ final class CustomTextField: UIView {
     private let textField = UITextField()
     private let stackView = UIStackView()
     
-    //MARK: - Live cycle -
+    //MARK: - Life cycle -
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

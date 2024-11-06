@@ -14,6 +14,7 @@ extension AuthorizationRouter {
 //MARK: - AuthorizationRouterInput -
 extension AuthorizationRouter: AuthorizationRouterInput {
     func openListScreen() {
-        
+        let listViewContoller = AssemblyListModule.assembleListViewConsroller()
+        authorizationController?.navigationController?.pushViewController(listViewContoller, animated: true)
     }
 }
