@@ -34,6 +34,8 @@ internal enum Localizable {
   internal static let locationUnknowed = Localizable.tr("Localizable", "location_unknowed", fallback: "Location unavailable")
   /// example@example.ru
   internal static let mailExample = Localizable.tr("Localizable", "mail_example", fallback: "example@example.ru")
+  /// Map
+  internal static let map = Localizable.tr("Localizable", "map", fallback: "Map")
   /// Nearest coffee shops
   internal static let nearestCoffeeShops = Localizable.tr("Localizable", "nearest_coffee_shops", fallback: "Nearest coffee shops")
   /// On the map

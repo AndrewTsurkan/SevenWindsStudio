@@ -32,6 +32,10 @@ extension ListPresenter: ListViewOutput {
     func onViewDidLoad() {
         interactor.getData(urlString: Constants.urlString, token: token)
     }
+    
+    func showMap() {
+        router.openMap(cofeData: data)
+    }
 }
 
 //MARK: - ListInteractorOutput -
@@ -48,10 +52,10 @@ extension ListPresenter {
             let self else { return }
             let currentLatitude = location.coordinate.latitude
             let currentLongitude = location.coordinate.longitude
-            let targetLatitudeString = self.data[index].point.latitude
-            let targetLongitudeString = self.data[index].point.longitude
-            guard let targetLatitude = Double(targetLatitudeString),
-                  let targetLongitude = Double(targetLongitudeString) else { return }
+            guard let targetLatitudeString = self.data[index].point?.latitude,
+                    let targetLongitudeString = self.data[index].point?.longitude,
+                    let targetLatitude = Double(targetLatitudeString),
+                    let targetLongitude = Double(targetLongitudeString) else { return }
             
             distance = self.locationManager.calculateDistance(from: currentLatitude, longitude1: currentLongitude, to: targetLatitude, longitude2: targetLongitude)
         })

@@ -13,6 +13,7 @@ final class ListContentView: UIView {
     //MARK: - Private properties -
     private let tableView = UITableView()
     private let mapButton = CustomButton()
+    var mapButtonAction: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,9 +76,14 @@ private extension ListContentView {
     
     func setupMapButton() {
         mapButton.settingButtonTitle(title: Localizable.onTheMap)
+        mapButton.addTarget(self, action: #selector(mapButtonTapped), for: .touchUpInside)
     }
     
     func settingView() {
         backgroundColor = .white
+    }
+    
+    @objc func mapButtonTapped() {
+        mapButtonAction?()
     }
 }

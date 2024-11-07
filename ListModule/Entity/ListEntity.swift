@@ -1,12 +1,12 @@
 import Foundation
 
 struct ListEntity: Codable {
-    let id: Int
-    let name: String
-    let point: Point
+    let id: Int?
+    let name: String?
+    let point: Point?
 }
 
 struct Point: Codable {
-    let latitude: String
-    let longitude: String
+    let latitude: String?
+    let longitude: String?
 }

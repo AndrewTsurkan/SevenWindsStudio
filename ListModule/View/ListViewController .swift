@@ -15,6 +15,7 @@ final class ListViewController: UIViewController {
         setDelegateAndDataSourceTableView()
         output?.onViewDidLoad()
         setupNavigation()
+        setupAction()
     }
 }
 
@@ -55,6 +56,11 @@ extension ListViewController {
     
     func setupNavigation() {
         navigationItem.title = Localizable.nearestCoffeeShops
-
+    }
+    
+    func setupAction() {
+        contenView.mapButtonAction = { [weak self] in
+            self?.output?.showMap()
+        }
     }
 }
