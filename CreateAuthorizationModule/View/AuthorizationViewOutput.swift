@@ -1,5 +1,6 @@
 import Foundation
 
 protocol AuthorizationViewOutput: AnyObject {
-    func userSelectedCreateAccount(login: String, password: String)
+    func userSelectedEnterInAccount(login: String, password: String)
+    func userSelectedCreateAccount()
 }

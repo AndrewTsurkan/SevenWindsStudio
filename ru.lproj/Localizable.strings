@@ -12,5 +12,14 @@
 
 //MARK: - Authtorization -
 "enter_title" = "Войти";
-"alert_text_authotorization" = "Этот аккаунт не зарегистрирован";
+"alert_text_authotorization" = "Не верный логин или пароль";
+"on_the_map" = "На карте";
+
+//MARK: - LocationManaget -
+"location_error" = "Не удалось определить местоположение";
+"location" = "Местоположение:";
+"location_unknowed" = "Местоположение недоступно";
+"location_permission" = "Разрешение получено";
+"kilometer" = "км от вас";
+"nearest_coffee_shops" = "Ближайшие кофейни";
 

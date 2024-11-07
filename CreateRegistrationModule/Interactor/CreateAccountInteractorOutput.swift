@@ -1,5 +1,5 @@
 import Foundation
 protocol CreateAccountInteractorOutput:AnyObject {
-    func didCreateAccount()
+    func didCreateAccount(token: String)
     func showAlert()
 }

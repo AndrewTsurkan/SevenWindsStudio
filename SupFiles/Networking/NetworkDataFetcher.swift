@@ -2,9 +2,9 @@ import Foundation
 
 struct NetworkDataFetcher {
     private let networkService = NetworkService()
-    
+    //MARK: - POST -
     func fetchJson<T: Codable>(urlString: String, login: String, password: String, closure: @escaping (Result<T, Error>) -> ()) {
-        networkService.networkRequest(url: urlString, login: login, password: password) { result in
+        networkService.networkPOSTRequest(url: urlString, login: login, password: password) { result in
             switch result {
             case .success(let data):
                 do {
@@ -18,4 +18,22 @@ struct NetworkDataFetcher {
             }
         }
     }
+    
+    //MARK: - GET -
+    func fetchJson<T: Codable>(urlString: String, token: String, closure: @escaping (Result<T, Error>) -> ()) {
+        networkService.networkGETRequest(url: urlString, token: token) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let responce = try JSONDecoder().decode(T.self, from: data)
+                    closure(.success(responce))
+                } catch let error {
+                    closure(.failure(error))
+                }
+            case .failure(let error):
+                closure(.failure(error))
+            }
+        }
+    }
 }
+                                    

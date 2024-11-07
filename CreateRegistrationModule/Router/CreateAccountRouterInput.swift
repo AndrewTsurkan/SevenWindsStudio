@@ -1,5 +1,5 @@
 import Foundation
 
 protocol CreateAccountRouterInput: AnyObject {
-    func openAuthorizationScreen() 
+    func openListScreen(token: String)
 }

@@ -1,5 +1,6 @@
 import Foundation
 
 protocol AuthorizationRouterInput: AnyObject {
-    func openListScreen()
+    func openListScreen(token: String)
+    func openRegistretionScreen()
 }

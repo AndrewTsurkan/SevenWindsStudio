@@ -11,5 +11,13 @@
 
 //MARK: - Authtorization -
 "enter_title" = "Enter";
-"alert_text_authotorization" = "This account is not registered";
+"alert_text_authotorization" = "Incorrect login or password";
+"on_the_map" = "On the map";
 
+//MARK: - LocationManaget -
+"location_error" = "Failed to get location";
+"location" = "Location:";
+"location_unknowed" = "Location unavailable";
+"location_permission" = "Permission received";
+"kilometer" = "km for you";
+"nearest_coffee_shops" = "Nearest coffee shops";

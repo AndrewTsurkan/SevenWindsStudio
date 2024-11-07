@@ -27,7 +27,7 @@ extension CreateAccountPresenter: CreateAccountViewOutput {
     }
     
     func validPassword(password: String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+        let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9]).{6,}$"
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
@@ -43,8 +43,8 @@ extension CreateAccountPresenter: CreateAccountViewOutput {
 
 //MARK: - CreateAccountInteractorOutput -
 extension CreateAccountPresenter: CreateAccountInteractorOutput {
-    func didCreateAccount() {
-        router.openAuthorizationScreen()
+    func didCreateAccount(token: String) {
+        router.openListScreen(token: token)
     }
         
     func showAlert() {
