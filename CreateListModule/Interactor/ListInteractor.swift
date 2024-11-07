@@ -15,11 +15,11 @@ extension ListInteractor {
 
 //MARK: - ListInteractorInput -
 extension ListInteractor: ListInteractorInput {
-    func getData(urlString: String) {
-        networkManager.fetchJson(urlString: urlString) { [weak self] (result: Result<[ListEntity], Error>) in
+    func getData(urlString: String, token: String) {
+        networkManager.fetchJson(urlString: urlString, token: token) { [weak self] (result: Result<[ListEntity], Error>) in
             switch result {
             case .success(let data):
-                self?.outPut?.data = data 
+                self?.outPut?.data = data
             case .failure(let error):
                 print(error)
             }

@@ -14,16 +14,30 @@ internal enum Localizable {
   internal static let alertAction = Localizable.tr("Localizable", "alert_action", fallback: "OK")
   /// The user is registered with this email
   internal static let alertText = Localizable.tr("Localizable", "alert_text", fallback: "The user is registered with this email")
-  /// This account is not registered
-  internal static let alertTextAuthotorization = Localizable.tr("Localizable", "alert_text_authotorization", fallback: "This account is not registered")
+  /// Incorrect login or password
+  internal static let alertTextAuthotorization = Localizable.tr("Localizable", "alert_text_authotorization", fallback: "Incorrect login or password")
   /// Notification
   internal static let alertTitle = Localizable.tr("Localizable", "alert_title", fallback: "Notification")
   /// e-mail
   internal static let emailText = Localizable.tr("Localizable", "email_text", fallback: "e-mail")
   /// Enter
   internal static let enterTitle = Localizable.tr("Localizable", "enter_title", fallback: "Enter")
+  /// km for you
+  internal static let kilometer = Localizable.tr("Localizable", "kilometer", fallback: "km for you")
+  /// Location:
+  internal static let location = Localizable.tr("Localizable", "location", fallback: "Location:")
+  /// Failed to get location
+  internal static let locationError = Localizable.tr("Localizable", "location_error", fallback: "Failed to get location")
+  /// Permission received
+  internal static let locationPermission = Localizable.tr("Localizable", "location_permission", fallback: "Permission received")
+  /// Location unavailable
+  internal static let locationUnknowed = Localizable.tr("Localizable", "location_unknowed", fallback: "Location unavailable")
   /// example@example.ru
   internal static let mailExample = Localizable.tr("Localizable", "mail_example", fallback: "example@example.ru")
+  /// Nearest coffee shops
+  internal static let nearestCoffeeShops = Localizable.tr("Localizable", "nearest_coffee_shops", fallback: "Nearest coffee shops")
+  /// On the map
+  internal static let onTheMap = Localizable.tr("Localizable", "on_the_map", fallback: "On the map")
   /// Password
   internal static let password = Localizable.tr("Localizable", "password", fallback: "Password")
   /// ******

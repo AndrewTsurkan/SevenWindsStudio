@@ -5,7 +5,7 @@ fileprivate enum Constants {
     static let spacing: CGFloat = 8
     static let cornerRadius: CGFloat = 24.5
     static let labelSize: CGFloat = 15
-    static let customColor =  UIColor.init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
+    static let customColor: UIColor =  .init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
     static let dorderWidth: CGFloat = 2
     static let height: CGFloat = 47
     static let leftViewFrame: CGFloat = 0

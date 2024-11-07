@@ -21,8 +21,12 @@ final class AuthorizationPresenter {
 
 //MARK: - AuthorizationViewOutput -
 extension AuthorizationPresenter: AuthorizationViewOutput {
-    func userSelectedCreateAccount(login: String, password: String) {
+    func userSelectedEnterInAccount(login: String, password: String) {
         interactor.enterInAccount(urlString: Constants.urlString, login: login, password: password)
+    }
+    
+    func userSelectedCreateAccount() {
+        router.openRegistretionScreen()
     }
 }
 
@@ -32,8 +36,8 @@ extension AuthorizationPresenter: AuthorizationInteractorOutput {
         view.showAlert(title: Localizable.alertTitle, message: Localizable.alertTextAuthotorization)
     }
     
-    func showListViewController() {
-        router.openListScreen()
+    func showListViewController(token: String) {
+        router.openListScreen(token: token)
     }
     
     

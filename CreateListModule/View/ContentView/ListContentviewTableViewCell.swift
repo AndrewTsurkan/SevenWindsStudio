@@ -11,6 +11,7 @@ fileprivate enum Constants {
     static let shadowRadius: CGFloat = 2
     static let shadowOpacity: Float = 0.2
     static let shadowOffset: CGFloat = 2
+    static let heightStackView: CGFloat = 68
     
 }
 
@@ -44,8 +45,9 @@ final class ListContentviewTableViewCell: UITableViewCell {
 
 //MARK: - Public -
 extension ListContentviewTableViewCell {
-    func configure(data: ListEntity) {
+    func configure(data: ListEntity, distance: Int) {
         nameCafeLabel.text = data.name
+        distanceLabel.text = "\(distance) \(Localizable.kilometer) "
     }
 }
 
@@ -70,7 +72,7 @@ private extension ListContentviewTableViewCell {
         stackView.snp.makeConstraints {
             $0.top.right.left.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-Constants.stackViewSpacing)
-            $0.height.equalTo(68)
+            $0.height.equalTo(Constants.heightStackView)
         }
     }
     
@@ -79,8 +81,9 @@ private extension ListContentviewTableViewCell {
         stackView.spacing = Constants.stackViewSpacing
         stackView.alignment = .leading
         stackView.backgroundColor = Constants.cellBackgroundColor
+        stackView.distribution = .fillEqually
         
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: Constants.leftOffsetSctackView, bottom: 0, right: 0)
+        stackView.layoutMargins = UIEdgeInsets(top: 14, left: Constants.leftOffsetSctackView, bottom: 15, right: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layer.cornerRadius = Constants.cellRadius
         
@@ -95,7 +98,7 @@ private extension ListContentviewTableViewCell {
     func setupDistanceLabel() {
         distanceLabel.textColor = Constants.distanceTextColor
         distanceLabel.textAlignment = .left
-        distanceLabel.font = UIFont.boldSystemFont(ofSize: Constants.distanceLabelFontSize)
+        distanceLabel.font = UIFont.systemFont(ofSize: Constants.distanceLabelFontSize)
     }
     
     func settingCell() {

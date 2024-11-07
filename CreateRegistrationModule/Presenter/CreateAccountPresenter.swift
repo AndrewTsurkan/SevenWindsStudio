@@ -43,8 +43,8 @@ extension CreateAccountPresenter: CreateAccountViewOutput {
 
 //MARK: - CreateAccountInteractorOutput -
 extension CreateAccountPresenter: CreateAccountInteractorOutput {
-    func didCreateAccount() {
-        router.openAuthorizationScreen()
+    func didCreateAccount(token: String) {
+        router.openListScreen(token: token)
     }
         
     func showAlert() {

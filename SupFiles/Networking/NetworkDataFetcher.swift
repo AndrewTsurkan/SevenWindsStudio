@@ -20,8 +20,8 @@ struct NetworkDataFetcher {
     }
     
     //MARK: - GET -
-    func fetchJson<T: Codable>(urlString: String, closure: @escaping (Result<T, Error>) -> ()) {
-        networkService.networkGETRequest(url: urlString) { result in
+    func fetchJson<T: Codable>(urlString: String, token: String, closure: @escaping (Result<T, Error>) -> ()) {
+        networkService.networkGETRequest(url: urlString, token: token) { result in
             switch result {
             case .success(let data):
                 do {

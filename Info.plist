@@ -6,6 +6,8 @@
 	<array>
 		<string>SFUIDisplay-Bold.ttf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Для определения местоположения</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

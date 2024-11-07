@@ -12,8 +12,9 @@ extension AuthorizationInteractor: AuthorizationInteractorInput {
         networkManager.fetchJson(urlString: urlString, login: login, password: password) { [weak self] (result: Result<CreateAccountEntity, Error>) in
             guard let self else { return }
             switch result {
-            case .success(_):
-                outPut?.showListViewController()
+            case .success(let data):
+                guard let token = data.token else { return }
+                outPut?.showListViewController(token: token)
             case .failure(_):
                 self.outPut?.showAlert()
             }

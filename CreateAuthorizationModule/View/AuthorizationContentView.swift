@@ -4,6 +4,11 @@ fileprivate enum Constants {
     static let stackViewSpacing: CGFloat = 24
     static let leftAndRightOffset: CGFloat = 18
     static let enterButtonTopOffset: CGFloat = 30
+    static let registrationButtonFontSize: CGFloat = 16
+    static let registrationBittonTitleColor: UIColor = .init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
+    static let registrationButtonTopOffset: CGFloat = 20
+    static let regisrationButtonOffset: CGFloat = 10
+
 }
 
 final class AuthorizationContentView: UIView {
@@ -12,7 +17,10 @@ final class AuthorizationContentView: UIView {
     private let passwordField = CustomTextField()
     private let enterButton = CustomButton()
     private let stackView = UIStackView()
-    var buttonAction: (() -> Void)?
+    private let registrationButton = UIButton()
+    var enterButtonAction: (() -> Void)?
+    var registrationButtonAction: (() -> Void)?
+
     
     var emailText: String? {
         mailField.textFieldData()
@@ -42,6 +50,7 @@ private extension AuthorizationContentView {
         setupMailField()
         setupPasswordField()
         setupEnterButton()
+        setupRegistrationButton()
     }
     
     func addSubviews() {
@@ -49,18 +58,25 @@ private extension AuthorizationContentView {
         stackView.addArrangedSubview(mailField)
         stackView.addArrangedSubview(passwordField)
         addSubview(enterButton)
+        addSubview(registrationButton)
     }
     
     func makeConstraints() {
         stackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(Constants.stackViewSpacing)
+            $0.centerY.equalToSuperview().offset(-Constants.stackViewSpacing)
             $0.left.right.equalToSuperview().inset(Constants.leftAndRightOffset)
         }
         
         enterButton.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(Constants.leftAndRightOffset)
             $0.top.equalTo(stackView.snp.bottom).offset(Constants.enterButtonTopOffset)
+        }
+        
+        registrationButton.snp.makeConstraints {
+            $0.top.equalTo(enterButton.snp.bottom).offset(Constants.registrationButtonTopOffset)
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(Constants.regisrationButtonOffset)
         }
     }
     
@@ -84,6 +100,14 @@ private extension AuthorizationContentView {
         enterButton.settingButtonTitle(title: Localizable.enterTitle)
         enterButton.addTarget(self, action: #selector (enterButtonTapped), for: .touchUpInside)
     }
+    
+    func setupRegistrationButton() {
+        registrationButton.setTitle("Создать аккаунт", for: .normal)
+        registrationButton.backgroundColor = .clear
+        registrationButton.setTitleColor(Constants.registrationBittonTitleColor, for: .normal)
+        registrationButton.titleLabel?.font = UIFont.systemFont(ofSize: Constants.registrationButtonFontSize)
+        registrationButton.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+    }
 }
 
 //MARK: - Public -
@@ -102,6 +126,10 @@ extension AuthorizationContentView {
 //MARK: - Private -
 extension AuthorizationContentView {
     @objc func enterButtonTapped() {
-        buttonAction?()
+        enterButtonAction?()
+    }
+    
+    @objc func registrationButtonTapped() {
+        registrationButtonAction?()
     }
 }

@@ -19,7 +19,8 @@ extension CreateAccountInteractor: CreateAccountInteractorInput {
             guard let self else { return }
             switch result {
             case .success(let data):
-                self.outPut?.didCreateAccount()
+                guard let token = data.token else { return }
+                self.outPut?.didCreateAccount(token: token)
             case .failure(_):
                 self.outPut?.showAlert()
             }

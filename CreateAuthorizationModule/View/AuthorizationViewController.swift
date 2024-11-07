@@ -52,9 +52,14 @@ private extension AuthorizationViewController {
     }
     
     func setAction() {
-        contentView.buttonAction = { [weak self] in
+        contentView.enterButtonAction = { [weak self] in
             guard let self else { return }
-            self.output?.userSelectedCreateAccount(login: contentView.emailText ?? "", password: contentView.passwordText ?? "")
+            self.output?.userSelectedEnterInAccount(login: contentView.emailText ?? "", password: contentView.passwordText ?? "")
+        }
+        
+        contentView.registrationButtonAction = { [weak self] in
+            guard let self else { return }
+            self.output?.userSelectedCreateAccount()
         }
     }
 }

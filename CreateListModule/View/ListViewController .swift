@@ -14,6 +14,7 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
         setDelegateAndDataSourceTableView()
         output?.onViewDidLoad()
+        setupNavigation()
     }
 }
 
@@ -38,9 +39,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListContentviewTableViewCell.identifier, for: indexPath) as? ListContentviewTableViewCell else { return UITableViewCell() }
-        guard let cellData = output?.data[indexPath.row] else { return UITableViewCell() }
-        cell.configure(data: cellData)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListContentviewTableViewCell.identifier, for: indexPath) as? ListContentviewTableViewCell,
+        let output else { return UITableViewCell() }
+        let cellData = output.data[indexPath.row]
+        cell.configure(data: cellData, distance: Int(output.culculetedDistance(index: indexPath.row)))
         return cell
     }
 }
@@ -49,5 +51,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 extension ListViewController {
     func setDelegateAndDataSourceTableView() {
         contenView.setupDelegateAndDataSource(delegate: self, dataSource: self)
+    }
+    
+    func setupNavigation() {
+        navigationItem.title = Localizable.nearestCoffeeShops
+
     }
 }

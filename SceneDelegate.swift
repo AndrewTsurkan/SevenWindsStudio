@@ -8,7 +8,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScrene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScrene)
-        let rootViewController = RegistrationAssembly.assembleRegistrationModule()
+//        let rootViewController = RegistrationAssembly.assembleRegistrationModule()
+//        let rootViewController = AssemblyListModule.assembleListViewConsroller()
+        let rootViewController = AuthorizationAssembly.assembleAuthorizationModule()
+
         window.rootViewController = UINavigationController(rootViewController: rootViewController)
         self.window = window
         window.makeKeyAndVisible()
