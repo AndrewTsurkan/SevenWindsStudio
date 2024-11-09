@@ -5,4 +5,5 @@ protocol ListViewOutput: AnyObject {
     var data: [ListEntity] { get set }
     func culculetedDistance(index: Int) -> Double
     func showMap()
+    func showMenuScreen(index: Int)
 }

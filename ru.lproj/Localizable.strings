@@ -23,3 +23,7 @@
 "kilometer" = "км от вас";
 "nearest_coffee_shops" = "Ближайшие кофейни";
 "map" = "Карта";
+
+//MARK: - MenuScreen -
+"go_to_cartoon" = "Перейти к оплате";
+"menu" = "Меню";

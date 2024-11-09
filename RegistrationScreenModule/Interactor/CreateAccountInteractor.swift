@@ -3,6 +3,7 @@ import Foundation
 final class CreateAccountInteractor {
     //MARK: - Private propetries -
     private let networkManager = NetworkDataFetcher()
+    private let tokenKey = "tokenKey"
     weak var outPut: CreateAccountInteractorOutput?
 }
 
@@ -20,6 +21,7 @@ extension CreateAccountInteractor: CreateAccountInteractorInput {
             switch result {
             case .success(let data):
                 guard let token = data.token else { return }
+                KeychainManager.shared.save(value: token, key: tokenKey)
                 self.outPut?.didCreateAccount(token: token)
             case .failure(_):
                 self.outPut?.showAlert()

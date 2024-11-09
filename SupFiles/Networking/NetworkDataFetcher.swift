@@ -35,5 +35,23 @@ struct NetworkDataFetcher {
             }
         }
     }
+    
+    //MARK: - Get menu -
+    func fetchMenu(id: Int,  token: String, closure: @escaping (Result<[MenuScreenEntity], Error>) -> ()) {
+        let url =  "http://147.78.66.203:3210/location/\(id)/menu"
+        networkService.networkGETRequest(url: url, token: token) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let responce = try JSONDecoder().decode([MenuScreenEntity].self, from: data)
+                    closure(.success(responce))
+                }catch let error {
+                    closure(.failure(error))
+                }
+            case .failure(let error):
+                closure(.failure(error))
+            }
+        }
+    }
 }
-                                    
+

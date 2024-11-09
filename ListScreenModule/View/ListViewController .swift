@@ -46,6 +46,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(data: cellData, distance: Int(output.culculetedDistance(index: indexPath.row)))
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output?.showMenuScreen(index: indexPath.row)
+    }
 }
 
 //MARK: - Private -

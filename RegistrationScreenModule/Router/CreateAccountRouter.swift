@@ -14,7 +14,7 @@ extension CreateAccountRouter {
 //MARK: - CreateAccountRouterInput -
 extension CreateAccountRouter: CreateAccountRouterInput {
     func openListScreen(token: String) {
-        let authVC = AssemblyListModule.assembleListViewConsroller(token: token)
+        let authVC = AssemblyListModule.assembleListViewConsroller()
         registrationViewController?.navigationController?.pushViewController(authVC, animated: true)
     }    
 }

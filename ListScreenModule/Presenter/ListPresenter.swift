@@ -8,7 +8,7 @@ final class ListPresenter {
     private let interactor: ListInteractorInput
     private let router: ListRouterInput
     private let locationManager = LocationManager()
-    private let token: String
+    private let tokenKey = "tokenKey"
     
     var data: [ListEntity] = [] {
         didSet {
@@ -18,23 +18,27 @@ final class ListPresenter {
     
     init(view: ListViewInput,
          interactor: ListInteractorInput,
-         router:ListRouterInput,
-         token: String) {
+         router:ListRouterInput) {
         self.view = view
         self.interactor = interactor
         self.router = router
-        self.token = token
     }
 }
 
 //MARK: - ListViewOutput -
 extension ListPresenter: ListViewOutput {
     func onViewDidLoad() {
+        guard let token = KeychainManager.shared.get(key: tokenKey) else { return }
         interactor.getData(urlString: Constants.urlString, token: token)
     }
     
     func showMap() {
         router.openMap(cofeData: data)
+    }
+    
+    func showMenuScreen(index: Int) {
+        let dataList = data[index]
+        router.openMenuScreen(dataList: dataList)
     }
 }
 

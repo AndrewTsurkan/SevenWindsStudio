@@ -22,3 +22,7 @@
 "kilometer" = "km for you";
 "nearest_coffee_shops" = "Nearest coffee shops";
 "map" = "Map";
+
+//MARK: - MenuScreen -
+"go_to_cartoon" = "Go to cartoon";
+"menu" = "Menu";

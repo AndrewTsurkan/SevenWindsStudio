@@ -22,6 +22,8 @@ internal enum Localizable {
   internal static let emailText = Localizable.tr("Localizable", "email_text", fallback: "e-mail")
   /// Enter
   internal static let enterTitle = Localizable.tr("Localizable", "enter_title", fallback: "Enter")
+  /// Go to cartoon
+  internal static let goToCartoon = Localizable.tr("Localizable", "go_to_cartoon", fallback: "Go to cartoon")
   /// km for you
   internal static let kilometer = Localizable.tr("Localizable", "kilometer", fallback: "km for you")
   /// Location:
@@ -36,6 +38,8 @@ internal enum Localizable {
   internal static let mailExample = Localizable.tr("Localizable", "mail_example", fallback: "example@example.ru")
   /// Map
   internal static let map = Localizable.tr("Localizable", "map", fallback: "Map")
+  /// Menu
+  internal static let menu = Localizable.tr("Localizable", "menu", fallback: "Menu")
   /// Nearest coffee shops
   internal static let nearestCoffeeShops = Localizable.tr("Localizable", "nearest_coffee_shops", fallback: "Nearest coffee shops")
   /// On the map

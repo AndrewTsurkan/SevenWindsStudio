@@ -4,6 +4,7 @@ final class AuthorizationInteractor {
     //MARK: - Private properties -
     private let networkManager = NetworkDataFetcher()
     weak var outPut: AuthorizationInteractorOutput?
+    private let tokenKey = "tokenKey"
     
 }
 //MARK: - AuthorizationInteractorInput -
@@ -14,6 +15,7 @@ extension AuthorizationInteractor: AuthorizationInteractorInput {
             switch result {
             case .success(let data):
                 guard let token = data.token else { return }
+                KeychainManager.shared.save(value: token, key: tokenKey)
                 outPut?.showListViewController(token: token)
             case .failure(_):
                 self.outPut?.showAlert()
