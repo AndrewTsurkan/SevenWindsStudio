@@ -1,47 +1,58 @@
-import Foundation
+import UIKit
 import Alamofire
 
 struct NetworkService {
-    
-    enum APIError: Error {
-        case unknown
-        case invalidURL
-        case invalidData
-    }
- //MARK: - POST -
-    func networkPOSTRequest(url: String, login: String, password: String, completion: @escaping (Result<Data, Error>) -> ()) {
-        let params: [String: String] = ["login": login, "password": password]
-        guard let url = URL(string: url) else { return }
+    //MARK: - POST -
+    func networkPOSTRequest(url: String, login: String, password: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let params: [String: String] = [
+            "login": login,
+            "password": password
+        ]
         
-        guard var request = try? URLRequest(url: url, method: .post) else { return }
-        request.setValue("application/json", forHTTPHeaderField: "Content-type")
-        request.httpBody = try? JSONEncoder().encode(params)
-        AF.request(request).validate().response { response in
-            guard let data = response.data else {
-                if let error = response.error {
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json"
+        ]
+        
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
+            .validate()
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
                     completion(.failure(error))
                 }
-                return
             }
-            completion(.success(data))
-        }
     }
     
     //MARK: - GET -
-    
-    func networkGETRequest(url: String, token: String, completion: @escaping (Result<Data, Error>) -> ()) {
-        guard let url = URL(string: url) else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        AF.request(request).validate().response { response in
-            guard let data = response.data else {
-                if let error = response.error {
+    func networkGETRequest(url: String, token: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)"
+        ]
+        
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
                     completion(.failure(error))
                 }
-                return
             }
-            completion(.success(data))
+    }
+    
+    func loadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
+        AF.request(url).responseData { response in
+            switch response.result {
+            case .success(let data):
+                let image = UIImage(data: data)
+                completion(image)
+            case .failure(let error):
+                print(error)
+                completion(nil)
+            }
         }
     }
 }

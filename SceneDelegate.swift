@@ -9,7 +9,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScrene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScrene)
 //        let rootViewController = RegistrationAssembly.assembleRegistrationModule()
-//        let rootViewController = AssemblyListModule.assembleListViewConsroller()
+//        let data: [ListEntity] = [.init(id: 1, name: "Площадь героев", point: .init(latitude: "44.7241", longitude: "37.7675")), .init(id: 2, name: "Малая земля", point: .init(latitude: "44.7156", longitude: "37.8089"))]
+//        let rootViewController = MapScreenAssembly.assembleMapScreen(cofeData: data)
         let rootViewController = AuthorizationAssembly.assembleAuthorizationModule()
 
         window.rootViewController = UINavigationController(rootViewController: rootViewController)
@@ -18,10 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        KeychainManager.shared.deleate(key: "tokenKey")
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

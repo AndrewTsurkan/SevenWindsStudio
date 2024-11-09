@@ -1,4 +1,5 @@
 import UIKit
+import YandexMapsMobile
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        YMKMapKit.setApiKey("9a6b48ff-8cec-4695-a2f2-6b64a7deafdb")
+        YMKMapKit.sharedInstance()
+
         return true
     }
 
