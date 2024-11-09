@@ -26,3 +26,6 @@
 //MARK: - MenuScreen -
 "go_to_cartoon" = "Go to cartoon";
 "menu" = "Menu";
+
+//MARK: - OrderScreen -
+"pay" = "Pay";

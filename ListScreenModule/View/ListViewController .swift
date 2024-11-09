@@ -44,6 +44,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let output else { return UITableViewCell() }
         let cellData = output.data[indexPath.row]
         cell.configure(data: cellData, distance: Int(output.culculetedDistance(index: indexPath.row)))
+        cell.selectionStyle = .none
         return cell
     }
     

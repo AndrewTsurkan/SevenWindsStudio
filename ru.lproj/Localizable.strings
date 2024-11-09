@@ -27,3 +27,6 @@
 //MARK: - MenuScreen -
 "go_to_cartoon" = "Перейти к оплате";
 "menu" = "Меню";
+
+//MARK: - OrderScreen -
+"pay" = "Оплатить";

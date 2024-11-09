@@ -48,6 +48,8 @@ internal enum Localizable {
   internal static let password = Localizable.tr("Localizable", "password", fallback: "Password")
   /// ******
   internal static let passwordMask = Localizable.tr("Localizable", "password_mask", fallback: "******")
+  /// Pay
+  internal static let pay = Localizable.tr("Localizable", "pay", fallback: "Pay")
   /// Registration
   internal static let registrationTitle = Localizable.tr("Localizable", "registration_title", fallback: "Registration")
   /// Repeat password

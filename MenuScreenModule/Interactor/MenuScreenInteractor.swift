@@ -29,8 +29,14 @@ extension MenuScreenInteractor: MenuScreenInteractorInput {
     
     func getImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
         guard let urlString else { return }
-        networkService.loadImage(from: urlString) { image in
-            completion(image)
+        if let imageCached = ImageCache.shared.getImage(url: urlString) {
+            completion(imageCached)
+        } else {
+            networkService.loadImage(from: urlString) { image in
+                guard let image else { return }
+                ImageCache.shared.save(url: urlString, image: image)
+                completion(image)
+            }
         }
     }
 }

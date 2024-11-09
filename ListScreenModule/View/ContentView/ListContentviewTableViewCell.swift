@@ -86,7 +86,6 @@ private extension ListContentviewTableViewCell {
         stackView.layoutMargins = UIEdgeInsets(top: 14, left: Constants.leftOffsetSctackView, bottom: 15, right: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layer.cornerRadius = Constants.cellRadius
-        
     }
     
     func setupNameCafeLabel() {
