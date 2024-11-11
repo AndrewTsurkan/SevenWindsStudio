@@ -1,0 +1,37 @@
+//MARK: - CreateAccount -
+"email_text" = "e-mail";
+"mail_example" = "example@example.ru";
+"password_mask" = "******";
+"password" = "Пароль";
+"repeat_password" = "Повторите пароль";
+"registration_title" = "Регистрация";
+"alert_text" = "Пользователь с такой электронной почтой зарегестрирована ";
+"alert_title" = "Уведомление";
+"alert_action" = "Хорошо";
+
+
+//MARK: - Authtorization -
+"enter_title" = "Войти";
+"alert_text_authotorization" = "Не верный логин или пароль";
+"on_the_map" = "На карте";
+"create_account" = "Создать аккаунт";
+
+//MARK: - LocationManaget -
+"location_error" = "Не удалось определить местоположение";
+"location" = "Местоположение:";
+"location_unknowed" = "Местоположение недоступно";
+"location_permission" = "Разрешение получено";
+"kilometer" = "км от вас";
+"nearest_coffee_shops" = "Ближайшие кофейни";
+"map" = "Карта";
+
+//MARK: - MenuScreen -
+"go_to_cartoon" = "Перейти к оплате";
+"menu" = "Меню";
+
+//MARK: - OrderScreen -
+"pay" = "Оплатить";
+"rub" = "руб";
+"waiting_text_order" = "Время ожидания заказа \n15 минут! \nСпасибо, что выбрали нас!!";
+"waiting_text_not_order" = "Вы ничего \nне выбрали ";
+"you_order" = "Ваш заказ";
