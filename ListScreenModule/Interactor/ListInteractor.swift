@@ -19,7 +19,7 @@ extension ListInteractor: ListInteractorInput {
         networkManager.fetchJson(urlString: urlString, token: token) { [weak self] (result: Result<[ListEntity], Error>) in
             switch result {
             case .success(let data):
-                self?.outPut?.data = data
+                self?.outPut?.updateData(data: data)
             case .failure(let error):
                 print(error)
             }

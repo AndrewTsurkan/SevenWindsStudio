@@ -134,7 +134,7 @@ private extension CreateAccountContentView {
 }
 
 //MARK: - Private -
-extension CreateAccountContentView {
+private extension CreateAccountContentView {
     @objc func registerButtonTapped() {
         buttonAction?()
     }

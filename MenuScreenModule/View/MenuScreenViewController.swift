@@ -16,6 +16,7 @@ final class MenuScreenViewController: UIViewController {
         contentView.setDelegate(delegate: self, dataSource: self)
         output?.onViewDidLoad()
         setupNavigation()
+        setupAction()
     }
 }
 //MARK: - Public -
@@ -42,10 +43,10 @@ extension MenuScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             }
         }
         cell.minusAction = { [weak self] in
-            self?.output?.cellMinusButtonAction(cell: cell)
+            cell.quantity = output.cellMinusButtonAction(quantity: &cell.quantity, index: indexPath.item)
         }
         cell.plusAction = { [weak self] in
-            self?.output?.cellPlusButtonAction(cell: cell)
+            cell.quantity = output.cellPlusButtonAction(quantity: &cell.quantity, index: indexPath.item)
         }
         return cell
     }

@@ -13,8 +13,8 @@ extension MenuScreenRouter {
 
 //MARK: - MenuScreenRouterInput -
 extension MenuScreenRouter: MenuScreenRouterInput {
-    func openOrderScreen() {
-//        let orderScreenViewController = AssemblOrderScreenViewController.assembleOrderScreen()
-//        menuScreenViewController?.navigationController?.pushViewController(orderScreenViewController, animated: true)
+    func openOrderScreen(orderData: [OrderData]) {
+        let orderScreenViewController = OrderScreenAssembly.assembleOrderScreen(orderData: orderData)
+        menuScreenViewController?.navigationController?.pushViewController(orderScreenViewController, animated: true)
     }
 }

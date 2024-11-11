@@ -7,7 +7,7 @@ fileprivate enum Constants {
 final class AuthorizationPresenter {
     //MARK: - Private properties -
     private let interactor: AuthorizationInteractorInput
-    private let view: AuthorizationViewInput
+    weak var view: AuthorizationViewInput?
     private let router: AuthorizationRouterInput
     
     init(interactor: AuthorizationInteractor,
@@ -33,7 +33,7 @@ extension AuthorizationPresenter: AuthorizationViewOutput {
 //MARK: - AuthorizationInteractorOutput -
 extension AuthorizationPresenter: AuthorizationInteractorOutput {
     func showAlert() {
-        view.showAlert(title: Localizable.alertTitle, message: Localizable.alertTextAuthotorization)
+        view?.showAlert(title: Localizable.alertTitle, message: Localizable.alertTextAuthotorization)
     }
     
     func showListViewController(token: String) {

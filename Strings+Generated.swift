@@ -18,6 +18,8 @@ internal enum Localizable {
   internal static let alertTextAuthotorization = Localizable.tr("Localizable", "alert_text_authotorization", fallback: "Incorrect login or password")
   /// Notification
   internal static let alertTitle = Localizable.tr("Localizable", "alert_title", fallback: "Notification")
+  /// Create Account
+  internal static let createAccount = Localizable.tr("Localizable", "create_account", fallback: "Create Account")
   /// e-mail
   internal static let emailText = Localizable.tr("Localizable", "email_text", fallback: "e-mail")
   /// Enter
@@ -54,6 +56,17 @@ internal enum Localizable {
   internal static let registrationTitle = Localizable.tr("Localizable", "registration_title", fallback: "Registration")
   /// Repeat password
   internal static let repeatPassword = Localizable.tr("Localizable", "repeat_password", fallback: "Repeat password")
+  /// rub
+  internal static let rub = Localizable.tr("Localizable", "rub", fallback: "rub")
+  /// You haven't 
+  /// chosen anything
+  internal static let waitingTextNotOrder = Localizable.tr("Localizable", "waiting_text_not_order", fallback: "You haven't \nchosen anything")
+  /// Order waiting time 
+  /// 15 minutes! 
+  /// Thank you for choosing us!
+  internal static let waitingTextOrder = Localizable.tr("Localizable", "waiting_text_order", fallback: "Order waiting time \n15 minutes! \nThank you for choosing us!")
+  /// You order
+  internal static let youOrder = Localizable.tr("Localizable", "you_order", fallback: "You order")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

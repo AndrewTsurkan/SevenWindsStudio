@@ -16,6 +16,12 @@ fileprivate enum Constants {
     static let withAndheightButton: CGFloat = 24
     static let counterStackViewOffset: CGFloat = 9
     static let labelStackViewSpasing: CGFloat = 6
+    static let mainStackViewTopInset: CGFloat = 14
+    static let mainStackViewBottomInset: CGFloat = 9
+    static let mainStackViewLeftInset: CGFloat = 10
+    static let mainStackViewRightInset: CGFloat = 10
+    static let mainStackViewRightOffset: CGFloat = 26
+    static let mainSteckViewHeight: CGFloat = 71
 }
 
 final class OrderScreenTableViewCell: UITableViewCell {
@@ -44,6 +50,7 @@ final class OrderScreenTableViewCell: UITableViewCell {
     var minusAction: (() -> Void)?
     var plusAction: (() -> Void)?
     
+    //MARK: - Life cycle - 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -51,6 +58,29 @@ final class OrderScreenTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        mainStackView.layoutIfNeeded()
+        configureShadowPath()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = nil
+        quantityLabel.text = nil
+        priceLabel.text = textInputContextIdentifier
+        
+    }
+}
+
+//MARK: - Public -
+extension OrderScreenTableViewCell {
+    func configure(cellData: OrderData) {
+        nameLabel.text = cellData.name
+        quantityLabel.text = "\(cellData.quantity)"
+        priceLabel.text = "\(cellData.price) \(Localizable.rub)"
     }
 }
 
@@ -67,13 +97,12 @@ private extension OrderScreenTableViewCell {
         setupMinusButton()
         setupQuantityLabel()
         setupPlusButton()
-        configureShadowPath()
     }
     
     func addSubviews() {
-        addSubview(mainStackView)
-        addSubview(labelStackView)
-        addSubview(counterStackView)
+        contentView.addSubview(mainStackView)
+        contentView.addSubview(labelStackView)
+        contentView.addSubview(counterStackView)
         mainStackView.addArrangedSubview(labelStackView)
         mainStackView.addArrangedSubview(emptyView)
         mainStackView.addArrangedSubview(counterStackView)
@@ -86,9 +115,10 @@ private extension OrderScreenTableViewCell {
     
     func makeConstraints() {
         mainStackView.snp.makeConstraints {
-            $0.top.right.left.equalToSuperview()
+            $0.top.left.equalToSuperview()
+            $0.right.equalToSuperview().offset(-Constants.mainStackViewRightOffset)
             $0.bottom.equalToSuperview().offset(-Constants.mainStackViewBottomOffset)
-            $0.height.equalTo(Constants.heightStackView)
+            $0.height.equalTo(Constants.mainSteckViewHeight)
         }
         
         plusButton.snp.makeConstraints {
@@ -118,9 +148,13 @@ private extension OrderScreenTableViewCell {
         mainStackView.backgroundColor = Constants.cellBackgroundColor
         mainStackView.distribution = .fillProportionally
         
-        mainStackView.layoutMargins = UIEdgeInsets(top: 14, left: 10, bottom: 9, right: 10)
+        mainStackView.layoutMargins = UIEdgeInsets(top: Constants.mainStackViewTopInset,
+                                                   left: Constants.mainStackViewLeftInset,
+                                                   bottom: Constants.mainStackViewBottomInset,
+                                                   right: Constants.mainStackViewRightInset)
         mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.layer.cornerRadius = Constants.cellRadius
+        mainStackView.alignment = .center
     }
     
     func setupMinusButton() {
@@ -132,6 +166,7 @@ private extension OrderScreenTableViewCell {
     func setupCounterSteckView() {
         counterStackView.axis = .horizontal
         counterStackView.spacing = Constants.counterStackViewOffset
+        counterStackView.distribution = .fillEqually
     }
     
     func setupLabelStackView() {
@@ -143,7 +178,6 @@ private extension OrderScreenTableViewCell {
         quantityLabel.textColor = Constants.mainTextColor
         quantityLabel.font = UIFont(name: "SFUIDisplay-Bold", size: Constants.nameLabelFontSize)
         quantityLabel.textAlignment = .center
-        quantityLabel.text = "\(quantity)"
     }
     
     func setupPlusButton() {

@@ -102,7 +102,7 @@ private extension AuthorizationContentView {
     }
     
     func setupRegistrationButton() {
-        registrationButton.setTitle("Создать аккаунт", for: .normal)
+        registrationButton.setTitle(Localizable.createAccount, for: .normal)
         registrationButton.backgroundColor = .clear
         registrationButton.setTitleColor(Constants.registrationBittonTitleColor, for: .normal)
         registrationButton.titleLabel?.font = UIFont.systemFont(ofSize: Constants.registrationButtonFontSize)
@@ -124,7 +124,7 @@ extension AuthorizationContentView {
 }
 
 //MARK: - Private -
-extension AuthorizationContentView {
+private extension AuthorizationContentView {
     @objc func enterButtonTapped() {
         enterButtonAction?()
     }

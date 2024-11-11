@@ -3,7 +3,12 @@ fileprivate enum Constants {
     static let pyamantButtonBottomOffset: CGFloat = 32
     static let pyamantButtonLeftOffset: CGFloat = 19
     static let pyamantButtonRightOffset: CGFloat = 18
-    static let wiatingLabelColor: UIColor = .init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
+    static let waitingLabelColor: UIColor = .init(red: 132/255, green: 99/255, blue: 64/255, alpha: 1)
+    static let waitingLabelCenterYOffset: CGFloat = 100
+    static let tableViewTopAndBottomInset: CGFloat = 15
+    static let tableViewLeftInset: CGFloat = 10
+    static let tableViewBottomOffset: CGFloat = 20
+    static let waitingLabelFontSize: CGFloat = 24
 }
 final class OrderScreenContentView: UIView {
     //MARK: - Private properties -
@@ -23,6 +28,18 @@ final class OrderScreenContentView: UIView {
     }
 }
 
+//MARK: - Public -
+extension OrderScreenContentView {
+    func configureWaitingLabel(bool: Bool) {
+        waitingLabel.text =  bool ? Localizable.waitingTextOrder : Localizable.waitingTextNotOrder
+    }
+    
+    func setDelegateAndDataSource(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        tableView.dataSource = dataSource
+        tableView.delegate = delegate
+    }
+}
+
 //MARK: - UI -
 private extension OrderScreenContentView {
     func setupUI() {
@@ -31,6 +48,7 @@ private extension OrderScreenContentView {
         setupTableView()
         setupWaitingLabel()
         setupPaymentBurron()
+        backgroundColor = .white
     }
     
     func addSubviews() {
@@ -47,13 +65,13 @@ private extension OrderScreenContentView {
         }
         
         waitingLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(-100)
-            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(Constants.waitingLabelCenterYOffset)
         }
         
         tableView.snp.makeConstraints {
-            $0.top.right.left.equalToSuperview()
-            $0.bottom.equalTo(waitingLabel.snp.top).offset(-20)
+            $0.top.left.right.equalToSuperview()
+            $0.bottom.equalTo(waitingLabel.snp.top).inset(-Constants.tableViewBottomOffset)
         }
     }
     
@@ -61,12 +79,18 @@ private extension OrderScreenContentView {
         tableView.register(OrderScreenTableViewCell.self, forCellReuseIdentifier: OrderScreenTableViewCell.identifier)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.contentInset = .init(top: Constants.tableViewTopAndBottomInset,
+                                       left: Constants.tableViewLeftInset,
+                                       bottom: Constants.tableViewTopAndBottomInset,
+                                       right: 0)
+        tableView.isScrollEnabled = false
     }
     
     func setupWaitingLabel() {
-        waitingLabel.font = UIFont(name: "SFUIDisplay-Bold", size: 24)
-        waitingLabel.textColor = Constants.wiatingLabelColor
+        waitingLabel.font = UIFont(name: "SFUIDisplay-Bold", size: Constants.waitingLabelFontSize)
+        waitingLabel.textColor = Constants.waitingLabelColor
         waitingLabel.numberOfLines = 3
+        waitingLabel.textAlignment = .center
     }
     
     func setupPaymentBurron() {
