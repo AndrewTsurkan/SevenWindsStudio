@@ -14,6 +14,7 @@
 "enter_title" = "Войти";
 "alert_text_authotorization" = "Не верный логин или пароль";
 "on_the_map" = "На карте";
+"create_account" = "Создать аккаунт";
 
 //MARK: - LocationManaget -
 "location_error" = "Не удалось определить местоположение";
@@ -27,3 +28,10 @@
 //MARK: - MenuScreen -
 "go_to_cartoon" = "Перейти к оплате";
 "menu" = "Меню";
+
+//MARK: - OrderScreen -
+"pay" = "Оплатить";
+"rub" = "руб";
+"waiting_text_order" = "Время ожидания заказа \n15 минут! \nСпасибо, что выбрали нас!!";
+"waiting_text_not_order" = "Вы ничего \nне выбрали ";
+"you_order" = "Ваш заказ";

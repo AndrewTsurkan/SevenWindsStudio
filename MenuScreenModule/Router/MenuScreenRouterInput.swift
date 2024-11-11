@@ -1,4 +1,4 @@
 import Foundation
 protocol MenuScreenRouterInput: AnyObject {
-     func openOrderScreen()
+    func openOrderScreen(orderData: [OrderData])
 }

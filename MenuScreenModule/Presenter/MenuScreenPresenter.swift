@@ -2,14 +2,15 @@ import UIKit
 
 final class MenuScreenPresenter {
     //MARK: - Private properties -
-    private let view: MenuScreenViewInput
+    weak var view: MenuScreenViewInput?
     private let interactor: MenuScreenInteractorInput
     private let router: MenuScreenRouterInput
     private let tokenKey = "tokenKey"
+    private var orderData: [OrderData] = []
     
     var dataMenu: [MenuScreenEntity] = [] {
         didSet {
-            view.reloadCollectionView()
+            view?.reloadCollectionView()
         }
     }
     private let dataList: ListEntity
@@ -41,22 +42,46 @@ extension MenuScreenPresenter: MenuScreenViewOutput {
         interactor.getMenu(id: id, token: token)
     }
     
-    func cellMinusButtonAction(cell: MenuScreenCollectionViewCell) {
-        if cell.quantity > 0 {
-            cell.quantity -= 1
+    func cellMinusButtonAction(quantity: inout Int, index: Int) -> Int {
+        if quantity > 0 {
+            quantity -= 1
+            if let existingIndex = orderData.firstIndex(where: { $0.name == dataMenu[index].name }) {
+                if quantity == 0 {
+                    orderData.remove(at: existingIndex)
+                } else {
+                    orderData[existingIndex].quantity = quantity
+                }
+            }
         }
+        return quantity
     }
     
-    func cellPlusButtonAction(cell: MenuScreenCollectionViewCell) {
-        cell.quantity += 1
+    func cellPlusButtonAction(quantity: inout Int, index: Int) -> Int {
+        quantity += 1
+        
+        if let existingIndex = orderData.firstIndex(where: { $0.name == dataMenu[index].name }) {
+            orderData[existingIndex].quantity += 1
+        } else {
+            orderData.append(.init(name: dataMenu[index].name!,
+                                   price: dataMenu[index].price!,
+                                   quantity: quantity))
+        }
+        return quantity
     }
     
     func tapedButton() {
-        router.openOrderScreen()
+        router.openOrderScreen(orderData: orderData)
     }
 }
 
 //MARK: - MenuScreenInteractorOutput -
 extension MenuScreenPresenter: MenuScreenInteractorOutput {
     
+}
+
+//MARK: - Private -
+private extension MenuScreenPresenter {
+    func saveData() {
+        
+    }
 }

@@ -36,14 +36,15 @@ extension ListViewController: ListViewInput {
 //MARK: - UITableViewDelegate, UITableViewDataSource -
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        output?.data.count ?? 0
+        output?.cellCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListContentviewTableViewCell.identifier, for: indexPath) as? ListContentviewTableViewCell,
         let output else { return UITableViewCell() }
-        let cellData = output.data[indexPath.row]
+        let cellData = output.cellData(index: indexPath.row)
         cell.configure(data: cellData, distance: Int(output.culculetedDistance(index: indexPath.row)))
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -53,7 +54,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - Private -
-extension ListViewController {
+private extension ListViewController {
     func setDelegateAndDataSourceTableView() {
         contenView.setupDelegateAndDataSource(delegate: self, dataSource: self)
     }

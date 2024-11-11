@@ -42,6 +42,6 @@ extension MapScreenViewController: MapScreenViewInput {
 //MARK: - Private -
 private extension MapScreenViewController {
     func setupNavigationBar() {
-        navigationItem.title = "Map"
+        navigationItem.title = Localizable.map
     }
 }

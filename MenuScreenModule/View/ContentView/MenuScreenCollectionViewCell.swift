@@ -71,7 +71,7 @@ extension MenuScreenCollectionViewCell {
         guard let nameText = data.name,
               let priceText = data.price else { return }
         nameLabel.text = nameText
-        priceLabel.text = "\(priceText) руб"
+        priceLabel.text = "\(priceText) \(Localizable.rub)"
     }
     
     func setupImageView(image: UIImage) {

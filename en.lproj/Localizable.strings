@@ -13,6 +13,7 @@
 "enter_title" = "Enter";
 "alert_text_authotorization" = "Incorrect login or password";
 "on_the_map" = "On the map";
+"create_account" = "Create Account";
 
 //MARK: - LocationManaget -
 "location_error" = "Failed to get location";
@@ -26,3 +27,10 @@
 //MARK: - MenuScreen -
 "go_to_cartoon" = "Go to cartoon";
 "menu" = "Menu";
+
+//MARK: - OrderScreen -
+"pay" = "Pay";
+"rub" = "rub";
+"waiting_text_order" = "Order waiting time \n15 minutes! \nThank you for choosing us!";
+"waiting_text_not_order" = "You haven't \nchosen anything";
+"you_order" = "You order";
