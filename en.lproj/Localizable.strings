@@ -1,0 +1,36 @@
+//MARK: - CreateAccount -
+"email_text" = "e-mail";
+"mail_example" = "example@example.ru";
+"password_mask" = "******";
+"password" = "Password";
+"repeat_password" = "Repeat password";
+"registration_title" = "Registration";
+"alert_text" = "The user is registered with this email";
+"alert_title" = "Notification";
+"alert_action" = "OK";
+
+//MARK: - Authtorization -
+"enter_title" = "Enter";
+"alert_text_authotorization" = "Incorrect login or password";
+"on_the_map" = "On the map";
+"create_account" = "Create Account";
+
+//MARK: - LocationManaget -
+"location_error" = "Failed to get location";
+"location" = "Location:";
+"location_unknowed" = "Location unavailable";
+"location_permission" = "Permission received";
+"kilometer" = "km for you";
+"nearest_coffee_shops" = "Nearest coffee shops";
+"map" = "Map";
+
+//MARK: - MenuScreen -
+"go_to_cartoon" = "Go to cartoon";
+"menu" = "Menu";
+
+//MARK: - OrderScreen -
+"pay" = "Pay";
+"rub" = "rub";
+"waiting_text_order" = "Order waiting time \n15 minutes! \nThank you for choosing us!";
+"waiting_text_not_order" = "You haven't \nchosen anything";
+"you_order" = "You order";
